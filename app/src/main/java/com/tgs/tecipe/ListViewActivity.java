@@ -26,6 +26,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -36,6 +38,8 @@ import com.tgs.tecipe.util.AppDataBean;
 import com.tgs.tecipe.util.Item;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class ListViewActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
@@ -46,19 +50,23 @@ public class ListViewActivity extends AppCompatActivity implements AdapterView.O
     private boolean isVeg=true;
 
 
+    Adptr adptr=null;
+
+
     private static final String[] COUNTRIES = new String[] { "Belgium",
             "France", "France_", "Italy", "Germany", "Spain" };
 
+    ArrayList<Item> recipesList=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
 
-        // setActionbarSearchUI();
+
 
         isVeg=getIntent().getBooleanExtra("IS_VEG",false);
 
-         mListView =(ListView)findViewById(R.id.list_view);
+        mListView =(ListView)findViewById(R.id.list_view);
 
 //        Log.d("TEST ","info "+ AppDataBean.getInstance().getVegList().size());
 
@@ -67,7 +75,6 @@ public class ListViewActivity extends AppCompatActivity implements AdapterView.O
         animation.setDuration(1000);
 
 
-          ArrayList<Item> recipesList=null;
         if(isVeg)
         {
             recipesList=AppDataBean.getInstance().getVegList();
@@ -76,15 +83,20 @@ public class ListViewActivity extends AppCompatActivity implements AdapterView.O
             recipesList=AppDataBean.getInstance().getNonVegList();
         }
 
-        MyCustomAdapter adapter=  new MyCustomAdapter(this,recipesList);
 
+        // setActionbarSearchUI();
+       /* MyCustomAdapter adapter=  new MyCustomAdapter(this,recipesList);
 
         mListView.setAdapter(adapter);
 
+        mListView.setOnItemClickListener(this);*/
+
+
+        adptr=new Adptr(recipesList,this);
+        mListView.setAdapter(adptr);
 
         mListView.setOnItemClickListener(this);
-
-      //  handleIntent(getIntent());
+        //  handleIntent(getIntent());
 
         // Load an ad into the AdMob banner view.
         adView = (AdView) findViewById(R.id.adView);
@@ -117,28 +129,9 @@ public class ListViewActivity extends AppCompatActivity implements AdapterView.O
         });
     }
 
-   /* private void setActionbarSearchUI() {
 
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowCustomEnabled(true);
-        // actionBar.setDisplayShowTitleEnabled(false);
-        // actionBar.setIcon(R.drawable.ic_action_search);
 
-        LayoutInflater inflator = (LayoutInflater) this
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v = inflator.inflate(R.layout.actionbar_layout, null);
 
-        actionBar.setCustomView(v);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, COUNTRIES);
-
-        AutoCompleteTextView textView = (AutoCompleteTextView) v
-                .findViewById(R.id.editText1);
-        textView.setAdapter(adapter);
-    }
-*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -152,13 +145,15 @@ public class ListViewActivity extends AppCompatActivity implements AdapterView.O
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                Log.d("TEST"," :onQueryTextSubmit :"+query);
+                //Log.d("TEST"," :onQueryTextSubmit :"+query);
+                adptr.getFilter().filter(query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                Log.d("TEST"," :onQueryTextChange :"+newText);
+                //Log.d("TEST"," :onQueryTextChange :"+newText);
+                adptr.getFilter().filter(newText);
                 return false;
             }
         });
@@ -166,12 +161,13 @@ public class ListViewActivity extends AppCompatActivity implements AdapterView.O
             @Override
             public boolean onClose() {
 
-                Log.d("TEST"," :setOnCloseListener :");
+                adptr.getFilter().filter("");
+                // Log.d("TEST"," :setOnCloseListener :");
                 return false;
             }
         });
 
-       /* searchView.setSearchableInfo(
+        /*searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));*/
 
         return true;
@@ -184,69 +180,9 @@ public class ListViewActivity extends AppCompatActivity implements AdapterView.O
         startActivity(intent);
     }
 
-    class MyCustomAdapter extends BaseAdapter
-    {
-        ArrayList<Item> arrayList=null;
-        Context context=null;
-
-        public MyCustomAdapter(Context context, ArrayList<Item> arrayList)
-        {
-            this.context=context;
-
-            this.arrayList=arrayList;
-        }
-
-        @Override
-        public int getCount() {
-            return arrayList.size();
-        }
-
-        @Override
-        public Object getItem(int i) {
-            return arrayList.get(i);
-        }
-
-        @Override
-        public long getItemId(int i) {
-            return i;
-        }
-
-        @Override
-        public View getView(int position, View view, ViewGroup viewGroup) {
-
-            if(view==null)
-            {
-                view=View.inflate(context,R.layout.list_item_new,null);
-                if(isVeg)
-                view.findViewById(R.id.strip_color).setBackgroundColor(ContextCompat.getColor(context,R.color.veg_color));
-                else
-                    view.findViewById(R.id.strip_color).setBackgroundColor(ContextCompat.getColor(context,R.color.non_veg_color));
-            }
-
-            ((TextView)view.findViewById(R.id.recipe_name)).setText(arrayList.get(position).getName());
-            ((TextView)view.findViewById(R.id.recipe_type)).setText(arrayList.get(position).getType());
 
 
-            return view;
-        }
-    }
 
-    @Override
-    protected void onNewIntent(Intent intent) {
-       // handleIntent(intent);
-
-        String query = intent.getStringExtra(SearchManager.QUERY);
-        Log.d("TEST ","query :"+query);
-    }
-
-   /* private void handleIntent(Intent intent) {
-
-        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
-            String query = intent.getStringExtra(SearchManager.QUERY);
-            //use the query to search
-            Log.d("TEST ","query :"+query);
-        }
-    }*/
 
 
     /**
@@ -275,5 +211,154 @@ public class ListViewActivity extends AppCompatActivity implements AdapterView.O
         canvas.drawBitmap(bmp, 0, 0, paint);
 
         return ret;
+    }
+
+
+
+
+
+    public class Adptr extends BaseAdapter implements Filterable {
+        public ArrayList<Item> modelValues;
+
+        private Context activity;
+        private LayoutInflater layoutinflater;
+        private List<Item> mOriginalValues;
+        private int PositionSelected = 0;
+
+        public Adptr (ArrayList<Item> modelValues, Context activity) {
+            super();
+            this.modelValues = modelValues;
+            this.activity = activity;
+
+
+        }
+
+        @Override
+        public int getCount() {
+
+            return modelValues.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+
+            return modelValues.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+
+            return position;
+        }
+
+
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+
+            layoutinflater = (LayoutInflater)  activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            ViewHolder holder = null;
+            Item model = modelValues.get(position);
+
+            if (convertView == null || !(convertView.getTag() instanceof ViewHolder)) {
+                convertView = layoutinflater.inflate(R.layout.list_item_new, null);
+                holder = new ViewHolder();
+
+                if(isVeg)
+                    convertView.findViewById(R.id.strip_color).setBackgroundColor(ContextCompat.getColor(activity,R.color.veg_color));
+                else
+                    convertView.findViewById(R.id.strip_color).setBackgroundColor(ContextCompat.getColor(activity,R.color.non_veg_color));
+
+                // holder.txtName = (TextView) convertView.findViewById(R.id.row_serch_txt_name);
+
+
+
+
+                convertView.setTag(holder);
+                // convertView.setTag(R.id.row_serch_txt_name, holder.txtName);
+
+            } else {
+                holder = (ViewHolder) convertView.getTag();
+            }
+
+            // holder.txtArtistName.setText("" + modelValue.get_NAME());
+
+            ((TextView)convertView.findViewById(R.id.recipe_name)).setText(modelValues.get(position).getName());
+            ((TextView)convertView.findViewById(R.id.recipe_type)).setText(modelValues.get(position).getType());
+
+
+
+            return convertView;
+        }
+
+        class ViewHolder {
+            TextView txtName;
+
+
+        }
+
+        @Override
+        public Filter getFilter() {
+
+            Filter filter = new Filter() {
+
+                @SuppressWarnings("unchecked")
+                @Override
+                protected void publishResults(CharSequence constraint, FilterResults results) {
+
+                    modelValues = (ArrayList<Item>) results.values; // has
+
+                    notifyDataSetChanged();
+                }
+
+                @Override
+                protected FilterResults performFiltering(CharSequence constraint) {
+                    FilterResults results = new FilterResults(); // Holds the
+                    // results of a
+                    // filtering
+                    // operation in
+                    // values
+                    // List<String> FilteredArrList = new ArrayList<String>();
+                    List<Item> FilteredArrList = new ArrayList<Item>();
+
+                    if (mOriginalValues == null) {
+                        mOriginalValues = new ArrayList<Item>(modelValues); // saves
+
+                    }
+
+
+                    if (constraint == null || constraint.length() == 0) {
+
+                        // set the Original result to return
+                        results.count = mOriginalValues.size();
+                        results.values = mOriginalValues;
+                    } else {
+                        Locale locale = Locale.getDefault();
+                        constraint = constraint.toString().toLowerCase(locale);
+                        for (int i = 0; i < mOriginalValues.size(); i++) {
+                            Item model = mOriginalValues.get(i);
+
+                            String data = model.getName();
+                            String category= model.getType();
+                            //Log.d("TEST "," Name :"+data);
+                            if (data.toLowerCase(locale).contains(constraint.toString()) ||category.toLowerCase(locale).contains(constraint.toString())) {
+
+                                // Log.d("TEST "," Inside :"+data);
+                                FilteredArrList.add(model);
+                            }
+                            else{
+                                // Log.d("TEST "," FAIL :"+data.toLowerCase(locale)+ "="+constraint.toString()+"?");
+                            }
+                        }
+                        // set the Filtered result to return
+                        results.count = FilteredArrList.size();
+                        results.values = FilteredArrList;
+
+                    }
+                    return results;
+                }
+            };
+            return filter;
+        }
+
     }
 }

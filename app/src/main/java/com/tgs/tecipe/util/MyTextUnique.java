@@ -24,7 +24,7 @@ public class MyTextUnique extends TextView {
     }
 
     private void init() {
-        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"RobotoCondensed-Light.ttf");
+        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"Roboto-Light.ttf");
         setTypeface(tf);
     }
 

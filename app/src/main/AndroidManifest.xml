@@ -77,10 +77,6 @@
                   android:resource="@xml/searchable" />
           </activity>
         -->
-        <activity
-            android:name=".DemoToolbar"
-            android:label="@string/title_activity_demo_toolbar"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
