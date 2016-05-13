@@ -11,20 +11,7 @@ android:background="@drawable/bg_img"
     tools:context="com.tgs.tecipe.ListViewActivity">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="result" />
 
-    <ListView
-        android:layout_marginTop="5dp"
-        android:dividerHeight="10dp"
-        android:id="@+id/list_view"
-        android:layout_width="match_parent"
-        android:layout_marginBottom="55dp"
-        android:fastScrollEnabled="true"
-        android:divider="@null"
-        android:layout_height="wrap_content"/>
 
     <!-- view for AdMob Banner Ad -->
     <com.google.android.gms.ads.AdView
@@ -32,10 +19,21 @@ android:background="@drawable/bg_img"
         android:id="@+id/adView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:layout_centerHorizontal="true"
         android:background="#c34d4b4b"
         android:layout_gravity="center_horizontal"
         ads:adSize="BANNER"
+        android:visibility="gone"
         ads:adUnitId="@string/banner_ad_unit_id" />
+
+    <ListView
+
+        android:dividerHeight="10dp"
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="5dp"
+         android:layout_above="@id/adView"
+        android:divider="@null"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>

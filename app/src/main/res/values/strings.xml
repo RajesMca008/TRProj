@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Telugu Recipes</string>
 
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
@@ -8,7 +7,6 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
     <string name="title_activity_demo_ads">DemoAds</string>
 
     <string name="hello_world">Hello world!</string>
@@ -17,4 +15,12 @@
         For more information, see https://support.google.com/admob/answer/3052638
     <!- -->
     <string name="banner_ad_unit_id">ca-app-pub-5674027387172985/2212976558</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+    <string name="app_name">Telugu Recipes</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_share">Share</string>
+    <string name="loading">Loading...</string>
+    <string name="title_activity_demo_toolbar">DemoToolbar</string>
 </resources>

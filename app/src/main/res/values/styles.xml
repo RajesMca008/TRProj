@@ -32,7 +32,6 @@
     <style name="Theme.MyCompatTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
 
 
-
     </style>
 
 </resources>
