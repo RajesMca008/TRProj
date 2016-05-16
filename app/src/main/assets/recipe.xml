@@ -1,0 +1,227 @@
+<recipe>
+ <!-- Nov-vegetarian  -->
+ <cat-name name="non-veg">
+
+  <!-- Name : Recipe name, Type : {fry,curry,rice,biryani,snack,pickle,soup} , link: file link -->
+  <item name="Egg Biryani" type="biryani" link="Eggbiryani.pdf"/>
+  <item name="Chicken Biryani" type="biryani" link="chickenbiryani.pdf"/>
+  <item name="Mutton Biryani" type="biryani" link="Muttonbiryani.pdf"/>
+  <item name="kima Pulav" type="rice" link="kimapulav.pdf"/>
+
+  <item name="Chicken Pakodi" type="snack" link="Chicken pakodi.pdf"/>
+  <item name="Chicken 65" type="snack" link="Chicken 65.pdf"/>
+
+  <item name="Chickenleg Fry" type="snack" link="Chickenleg Fry.pdf"/>
+  <item name="Dum Ka Biryani" type="rice" link="Dumkabiryani.pdf"/>
+
+  <item name="Egg Capsicum" type="curry" link="Eggcapsicum.pdf"/>
+  <item name="Egg Kobbari Fry" type="fry" link="EggKobbari fry.pdf"/>
+
+  <item name="Egg Potato" type="curry" link="Eggpotato.pdf"/>
+  <item name="Fish Fry" type="fry" link="Fish Fry.pdf"/>
+  <item name="Fish Pickle" type="pickle" link="Fish Pickle.pdf"/>
+
+  <item name="Mutton Fry" type="fry" link="Mutton fry.pdf"/>
+  <item name="Mutton Tikka" type="snack" link="Mutton Tikka.pdf"/>
+  <item name="Mutton Bones Soup" type="soup" link="muttonbones soup.pdf"/>
+  <item name="Mutton Chukkakura" type="curry" link="Muttonchukkakura.pdf"/>
+  <item name="Natukodi Pulusu" type="curry" link="Natukodi Pulusu.pdf"/>
+
+  <item name="Royyala Pachadi" type="pickle" link="Royyala Pachadi.pdf"/>
+  <item name="Pudina Chicken" type="curry" link="Pudinachicken.pdf"/>
+  <item name="Royyala Vepudu" type="fry" link="Royyala vepudu.pdf"/>
+
+  <item name="Royyalu Tomato" type="curry" link="Royyalu tomato.pdf"/>
+  <item name="Royyalu Dosakaya" type="curry" link="Royyaludosakaya.pdf"/>
+  <item name="Egg Prawns Gudlu Royyalu Curry" type="Curry" link="Egg Prawns Gudlu Royyalu Curry.pdf"/>
+  <item name="Tandoori Chicken" type="snack" link="Tandoori chicken.pdf"/>
+ </cat-name>
+
+ <!-- Vegetarian  -->
+ <cat-name name="veg">
+
+  <!-- Name : Recipe name, Type : {fry,curry,rice,biryani,snack,pickle} , link: file link -->
+  <item name="Cabbage Pickle" type="pickle" link="cabbage pickle.pdf"/>
+  <item name="Carrot Pickle" type="pickle" link="carrot pickle.pdf"/>
+  <item name="Podi" type="pickle" link="podi.pdf"/>
+
+
+  <!-- updated on 10 April 2014 -->
+  <item name="Aloo Pulav " type="biryani" link="aloo pulav.pdf"/>
+  <item name="Coconut Biryani " type="biryani" link="Coconut Biryani.pdf"/>
+  <item name="Gazar Fried Rice" type="biryani " link="Gazar Fried Rice.pdf"/>
+
+  <item name="Onion Biryani  " type=" biryani" link="Onion Biryani in telugu Ulli Pulav.pdf"/>
+
+  <item name="Pudina Pulav" type="biryani  " link="Pulav.pdf"/>
+
+  <item name="Tomato Rice" type=" biryani  " link="Tomato Rice.pdf"/>
+
+  <item name="Veg Biryani" type=" biryani " link="Veg Biryani.pdf"/>
+
+  <item name="vegetable Biryani" type=" biryani " link="vegitable biryani.pdf"/>
+
+  <item name="Aloo Fry" type="fry" link="Aloo fry.pdf"/>
+
+  <!-- <item name="Aratikaya vepudu" type="fry" link="Aratikaya vepudu.pdf"/> -->
+
+  <item name="Aritikaya Senagapappu Fry" type="fry " link="Aritikaya Senagapappu Fry.pdf"/>
+
+  <!-- <item name="Banan Dal Curry" type="fry" link="Banan Dal Curry.pdf"/> -->
+
+  <item name="Bangaladupma Vepudu" type="fry" link="Bangaladupma Vepudu.pdf"/>
+
+  <item name="Bitter Gourd Fry" type="fry" link="Bitter Gourd Fry.pdf"/>
+
+  <item name="Bitter Gourd  Stuffing" type=" fry " link="bittergourd frie.pdf"/>
+
+
+  <item name="Carrot Fry" type="fry" link="carrot fry.pdf"/>
+
+  <item name="Cherkin Podi Curry" type="fry" link="Cherkin Podi curry.pdf"/>
+
+  <item name="Dondakaya Ullikaaram" type="fry" link=" Dondakaya Ullikaaram.pdf"/>
+
+  <item name="Kanda Thotakura Fry" type=" fry " link="Kanda Thotakura Fry.pdf"/>
+
+  <item name="Mentu Aaku Pappu Curry" type="fry" link="Mentu aaku pappu koora.pdf"/>
+
+  <item name="Chikudukaya Vepudu" type="fry" link="Vankaya vepudu.pdf"/>
+
+  <item name="Aloo Masala Curry" type="curry" link="Aloo masala curry.pdf"/>
+
+  <item name="Aloo Gongura Curry" type="Curry" link="Aloo, Gongura Curry.pdf"/>
+
+  <item name="Alu 65" type="Curry" link="Alu 65.pdf"/>
+
+  <item name="Baby Potato Curry" type="curry " link="Baby potato curry.pdf"/>
+
+  <item name="Banana Dal Curry" type="Curry" link="Banan Dal Curry.pdf"/>
+
+  <item name="Bangaladumpa Kobbari" type="Curry" link="Bangaladumpa Kobbari.pdf"/>
+
+  <item name="Batani Curry" type="Curry" link="Batani Curry.pdf"/>
+
+  <item name="Beerakaya Curry" type="Curry" link="Beerakaya Koora.pdf"/>
+
+  <item name=" Beetroot Curry " type="Curry" link="Beetroot Curry.pdf"/>
+
+  <item name="Bottle Gourd Rasam" type="curry" link="Bottle Gourd Rasam.pdf"/>
+
+  <item name="Bread Kofta Curry" type="Curry" link="Bread Kofta Curry.pdf"/>
+
+  <item name="Brinjal Mentu Curry" type="Curry" link="Brinjal Mentu Curry.pdf"/>
+
+  <item name="Brinjal Tomato Curry" type="Curry" link="Brinjal Tamato Curry.pdf"/>
+
+  <item name=" Cabbage Aloo Curry" type="Curry" link="Cabbage Aloo Curry.pdf"/>
+
+  <item name=" Cabbage Kofta Curry" type=" Curry" link="Cabbage Kofta Curry.pdf"/>
+
+  <item name="Cabbage Tomato" type="Curry" link="Cabbage tomato.pdf"/>
+
+  <item name="Capsicum Curry  " type="curry" link="capsicum curry.pdf"/>
+
+  <item name=" Capsicum Paneer Curry" type="Curry" link="Capsicum Paneer Curry.pdf"/>
+
+  <item name="Capsicum Stuffed Curry" type="Curry" link="Capsicum Stuffed Curry.pdf"/>
+
+  <item name="Carrot Curry Preparation " type="Curry" link="Carrot Curry Preparation.pdf"/>
+
+  <item name="Chamadumpa Curry " type="Curry" link="Chamadumpa Curry.pdf"/>
+
+  <item name="Cheez Kofta Curry" type="Curry" link="Cheez Cofta Curry.pdf"/>
+
+  <item name="Coconut Brinjal Curry" type="Curry " link="Coconut Brinjal Curry.pdf"/>
+
+  <item name="Dondakaya Kobbari Curry" type="Curry" link="Dondakaya Kobbari Koora.pdf"/>
+
+  <item name="Dosakaya Curry Curry" type="Curry" link="Dosakaya Curry Koora.pdf"/>
+  <item name="Drum Stick Curry " type="Curry " link="Drum Stick Curry.pdf"/>
+
+  <item name="Gongura Curry" type="Curry" link="gongura koora.pdf"/>
+
+  <item name="Green Banana Aratikaya Kofta Curry  " type="Curry" link="Green Banana -Aratikaya Kofta Curry.pdf"/>
+
+  <item name="Gutti Vaankaaya" type="Curry" link="Gutti Vaankaaya.pdf"/>
+
+  <item name="Cauliflower Curry " type="curry" link="kaliflower curry.pdf"/>
+
+  <item name="Kobbari Chikkudu" type="Curry" link="Kobbari Chikkudu.pdf"/>
+
+  <item name="Meal Maker 65 " type="Curry" link="meal maker 65.pdf"/>
+
+  <item name="Meal Maker Gongura Curry " type="curry " link="meal maker, gongura curry.pdf"/>
+
+  <item name="Meal Maker Keema Curry" type="Curry" link="Meal-Maker Keema Curry.pdf"/>
+
+  <item name="Menthaku Bangaladumpa Curry " type="Curry" link="Menthaku Bangaladumpa Curry.pdf"/>
+
+  <item name="Mixture Curry " type="Curry" link="Mixture Curry.pdf"/>
+
+  <item name=" Mulakkada Tomato Curry" type="Curry" link="Mulakkada Tomato Curry.pdf"/>
+
+  <item name=" Mushroom Curry " type="Curry" link="Mushroom curry.pdf"/>
+
+  <item name="Palak Aloo Curry" type="Curry" link="Palak Aloo Curry.pdf"/>
+
+  <item name="Palu Potlakaya Curry " type="Curry" link="Palu, Potlakaya Koaara.pdf"/>
+
+  <item name="Paneer Curry " type="Curry" link="paneer curry.pdf   "/>
+
+  <item name="Panir Mentu Curry" type="Curry" link="Panir Mentu Curry.pdf" />
+
+  <item name="Panneer Batani Curry " type="Curry" link="Panneer Batani Curry.pdf"/>
+
+  <item name="Pappu Beerakaya" type="Curry" link="Pappu Beerakaya.pdf"/>
+
+
+  <item name="Pappu Mamidikaya" type="Curry" link="Pappu Mamidikaya.pdf"/>
+
+
+  <item name="Pumpkin Coconut Curry" type="Curry" link="Pumpkin Coconut Curry.pdf"/>
+
+  <item name="Pumpkin Curry" type="Curry" link="Pumpkin Curry.pdf"/>
+
+  <item name="Puttagodugula Vepudu" type="fry" link="Puttagodugula Vepudu.pdf"/>
+
+  <item name="Radish Coconut Mullangi Kobbari " type="Curry" link="Radish Coconut Mullangi Kobbari Curry.pdf"/>
+
+  <item name="Shrimp Tomato Curry" type="Curry" link="Shrimp Tomato Curry.pdf"/>
+
+
+  <item name="Sorakaya Curry" type="curry" link="Sorakaya with Milk Curry.pdf"/>
+
+  <item name="Soyaa Kimaa Mentu Curry" type="curry" link="soyaa kimaa mentu curry.pdf"/>
+
+
+  <item name="Telagapindi Pachhi Senagapappu " type="curry" link="Telagapindi Pachhi-Senagapappu Curry.pdf"/>
+
+  <item name="Usiri Pappu" type="curry" link="Usiri Pappu.pdf"/>
+
+  <item name="Vegetarian Curry" type="curry" link="vegetarian curry.pdf"/>
+
+  <!-- New itesm as on 20 Sept 2015-->
+
+  <item name="Bagara Rice" type="rice" link="bagara.pdf"/>
+  <item name="Dondakay Curry" type="curry" link="dondakay.pdf"/>
+  <item name="Gutti Vankaya" type="curry" link="gutti vankay.pdf"/>
+  <item name="Kakarakay Vepudu" type="curry" link="kakarkay vepudu.pdf"/>
+  <item name="Lady's Finger" type="curry" link="ladys finger.pdf"/>
+  <item name="Mixed vegetable Curry" type="curry" link="mix veg.pdf"/>
+  <item name="Radish Curry" type="curry" link="radish.pdf"/>
+  <item name="Vankaya Masala" type="curry" link="vankaya masala.pdf"/>
+  <!-- Eena dd rspice -->
+  <item name="Alasandala Curry" type="curry" link="Alasandala Kura.pdf"/>
+  <item name="Aloo Majjiga Pulusu" type="curry" link="aloo maggiga pulusu.pdf"/>
+  <item name="Aloo Matter Subzi" type="curry" link="Aloo Matter Subzi.pdf"/>
+  <item name="Aloo Palak" type="curry" link="Aloo Palak.pdf"/>
+  <item name="Aloo Paratha" type="curry" link="Aloo Paratha.pdf"/>
+  <item name="Aloo Rice" type="rice" link="Aloo Rice.pdf"/>
+  <item name="Aloo Curry" type="curry" link="aloo tuk.pdf"/>
+  <item name="Amki Dum Biryani" type="biryani" link="Amki Dum Biryani.pdf"/>
+  <item name="Anapaginjala Pappu" type="curry" link="Anapaginjala Pappu.pdf"/>
+  <item name="Anapakaya Curry" type="curry" link="Anapakaya_Milk_kura.pdf"/>
+
+ </cat-name>
+</recipe>
