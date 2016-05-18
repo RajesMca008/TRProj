@@ -41,7 +41,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class ListViewActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class ListViewActivity extends BaseActivity implements AdapterView.OnItemClickListener {
 
     private ListView mListView =null;
     private AdView adView=null;
@@ -58,7 +58,7 @@ public class ListViewActivity extends AppCompatActivity implements AdapterView.O
 
     ArrayList<Item> recipesList=null;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
 

@@ -7,6 +7,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.google.android.gcm.GCMBaseIntentService;
@@ -97,11 +99,19 @@ public class GCMIntentService extends GCMBaseIntentService {
         long when = System.currentTimeMillis();
         NotificationManager notificationManager = (NotificationManager)
                 context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Notification notification = new Notification(icon, message, when);
+        Bitmap bitmap= BitmapFactory.decodeResource(context.getResources(),R.mipmap.ic_launcher);
+        Notification notification =new Notification.Builder(context)
+                .setContentTitle(context.getString(R.string.app_name))
+                .setContentText(message)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                //.setLargeIcon(R.drawable.veg_icon)
+                .setLargeIcon(bitmap)
+                .build();
+        // new Notification(icon, message, when);
 
-        String title = context.getString(R.string.app_name);
+       //String title = context.getString(R.string.app_name);
 
-        Intent notificationIntent = new Intent(context, DrawerActivity.class);
+        Intent notificationIntent = new Intent(context, SplashScreenActivity.class);
         // set intent so it does not start a new activity
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP |
                 Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -110,7 +120,7 @@ public class GCMIntentService extends GCMBaseIntentService {
         notificationIntent.putExtra("MSG", message);
         PendingIntent intent =
                 PendingIntent.getActivity(context, 0, notificationIntent, 0);
-       // notification.setLatestEventInfo(context, title, message, intent);
+        // notification.setLatestEventInfo(context, title, message, intent);
 
         Random random = new Random();
         int m = random.nextInt(9999 - 1000) + 1000;
