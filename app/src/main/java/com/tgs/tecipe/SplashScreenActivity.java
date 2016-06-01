@@ -3,20 +3,15 @@ package com.tgs.tecipe;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.os.Message;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
+import android.widget.Toast;
 
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ExpandableListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
 import com.tgs.tecipe.util.AppDataBean;
 import com.tgs.tecipe.util.Item;
 import com.tgs.tecipe.util.XMLHandler;
@@ -25,7 +20,6 @@ import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -35,14 +29,17 @@ import javax.xml.parsers.SAXParserFactory;
 public class SplashScreenActivity extends AppCompatActivity implements View.OnClickListener{
 
 
-    private RelativeLayout mContentLayour=null;
-    private Animation animation =null;
+   // private RelativeLayout mContentLayour=null;
+   // private Animation animation =null;
 
-    private TextView vegText =null;
-    private TextView nonvegText =null;
+    //private TextView vegText =null;
+    //private TextView nonvegText =null;
 
     private SplashScreenActivity _activity;
     private XMLHandler xmlHandler=null;
+
+
+    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
@@ -52,25 +49,24 @@ public class SplashScreenActivity extends AppCompatActivity implements View.OnCl
 
         setContentView(R.layout.activity_splash_screen);
 
-        mContentLayour=(RelativeLayout)findViewById(R.id.main_content_layout);
-
-        findViewById(R.id.veg_btn).setOnClickListener(this);
-        findViewById(R.id.non_veg_btn).setOnClickListener(this);
+       // mContentLayour=(RelativeLayout)findViewById(R.id.main_content_layout);
 
 
 
 
 
 
-        mContentLayour.setVisibility(View.GONE);
 
 
-        animation = AnimationUtils.loadAnimation(SplashScreenActivity.this,R.anim.bottom_up);
+       //mContentLayour.setVisibility(View.GONE);
 
-        animation.setDuration(1000);
 
-        vegText =(TextView)findViewById(R.id.veg_text);
-        nonvegText =(TextView)findViewById(R.id.non_text);
+        //animation = AnimationUtils.loadAnimation(SplashScreenActivity.this,R.anim.bottom_up);
+
+        //animation.setDuration(1000);
+
+       // vegText =(TextView)findViewById(R.id.veg_text);
+       // nonvegText =(TextView)findViewById(R.id.non_text);
 
         hide();
 
@@ -81,23 +77,25 @@ public class SplashScreenActivity extends AppCompatActivity implements View.OnCl
             new BackGroundWork().execute("");
         }
         else {
-            mContentLayour.setVisibility(View.VISIBLE);
-            mContentLayour.startAnimation(animation);
+            findViewById(R.id.veg_btn).setOnClickListener(this);
+            findViewById(R.id.non_veg_btn).setOnClickListener(this);
+           // mContentLayour.setVisibility(View.VISIBLE);
+           // mContentLayour.startAnimation(animation);
         }
 
         /////////////////////////////////////////
 
-        final AlphaAnimation   animation1 = new AlphaAnimation(0.0f, 1.0f);
+      /*  final AlphaAnimation   animation1 = new AlphaAnimation(0.0f, 1.0f);
         animation1.setDuration(500);
         animation1.setStartOffset(500);
 
 
         final AlphaAnimation animation2 = new AlphaAnimation(1.0f, 0.0f);
         animation2.setDuration(500);
-        animation2.setStartOffset(500);
+        animation2.setStartOffset(500);*/
 
         //animation1 AnimationListener
-        animation1.setAnimationListener(new Animation.AnimationListener(){
+      /*  animation1.setAnimationListener(new Animation.AnimationListener(){
 
             @Override
             public void onAnimationEnd(Animation arg0) {
@@ -145,11 +143,11 @@ public class SplashScreenActivity extends AppCompatActivity implements View.OnCl
             }
 
         });
-
+*/
        // vegText.startAnimation(animation1);
 
 
-
+        goToNextLevel();
     }
 
 
@@ -183,7 +181,7 @@ public class SplashScreenActivity extends AppCompatActivity implements View.OnCl
         switch (view.getId())
         {
             case R.id.veg_btn:
-                Intent intent=new Intent(SplashScreenActivity.this,ListViewActivity.class);// DrawerActivity
+                Intent intent=new Intent(SplashScreenActivity.this,ListViewActivity.class);
                 intent.putExtra("IS_VEG",true);
                 startActivity(intent);
                 break;
@@ -273,10 +271,70 @@ public class SplashScreenActivity extends AppCompatActivity implements View.OnCl
             if(xmlHandler!=null)
             {
 
-                mContentLayour.setVisibility(View.VISIBLE);
-                mContentLayour.startAnimation(animation);
+                findViewById(R.id.veg_btn).setOnClickListener(_activity);
+                findViewById(R.id.non_veg_btn).setOnClickListener(_activity);
+              /*  mContentLayour.setVisibility(View.VISIBLE);
+                mContentLayour.startAnimation(animation);*/
             }
             dialog.dismiss();
         }
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        showInterstitial();
+    }
+
+
+    private void loadInterstitial() {
+        // Disable the next level button and load the ad.
+        AdRequest adRequest = new AdRequest.Builder()
+               // .setRequestAgent("android_studio:ad_template")
+                //.addTestDevice("85BE868226D2620A881B2A5C9D76AA8C")
+                .build();
+        mInterstitialAd.loadAd(adRequest);
+    }
+
+    private void showInterstitial() {
+        // Show the ad if it's ready. Otherwise toast and reload the ad.
+        if (mInterstitialAd != null && mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else {
+            //Toast.makeText(this, "Ad did not load", Toast.LENGTH_SHORT).show();
+            goToNextLevel();
+        }
+    }
+
+    private void goToNextLevel() {
+        // Show the next level and reload the ad to prepare for the level after.
+
+        mInterstitialAd = newInterstitialAd();
+        loadInterstitial();
+    }
+
+    private InterstitialAd newInterstitialAd() {
+        InterstitialAd interstitialAd = new InterstitialAd(this);
+        interstitialAd.setAdUnitId(getString(R.string.interstitial_ad_unit_id));
+        interstitialAd.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Proceed to the next level.
+                goToNextLevel();
+            }
+        });
+        return interstitialAd;
     }
 }

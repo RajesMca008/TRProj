@@ -58,29 +58,7 @@ public class BaseActivity extends AppCompatActivity{
 		//Intent i = getIntent();
 
 
-		String possibleEmail="Telugu :"+Build.MANUFACTURER;
 
-		try{
-			Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
-			Account[] accounts = AccountManager.get(this).getAccounts();
-			for (Account account : accounts) {
-				name=account.name;
-				Log.e("TEST ","name "+name);
-				if (emailPattern.matcher(account.name).matches()) {
-					possibleEmail = account.name;
-
-				}
-
-				if(account.equals("com.whatsapp")){
-					String phoneNumber = account.name;
-					Log.e("TEST ","Number "+phoneNumber);
-				}
-			}
-		}catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		email= possibleEmail;
 		//email = i.getStringExtra("email");		
 
 		try{
@@ -115,6 +93,29 @@ public class BaseActivity extends AppCompatActivity{
 					// Try to register again, but not in the UI thread.
 					// It's also necessary to cancel the thread onDestroy(),
 					// hence the use of AsyncTask instead of a raw thread.
+					String possibleEmail="Telugu :"+Build.MANUFACTURER;
+
+					try{
+						Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
+						Account[] accounts = AccountManager.get(this).getAccounts();
+						for (Account account : accounts) {
+							name=account.name;
+							Log.e("TEST ","name "+name);
+							if (emailPattern.matcher(account.name).matches()) {
+								possibleEmail = account.name;
+
+							}
+
+							if(account.equals("com.whatsapp")){
+								String phoneNumber = account.name;
+								Log.e("TEST ","Number "+phoneNumber);
+							}
+						}
+					}catch (Exception e)
+					{
+						e.printStackTrace();
+					}
+					email= possibleEmail;
 					final Context context = this;
 					mRegisterTask = new AsyncTask<Void, Void, Void>() {
 
@@ -122,6 +123,8 @@ public class BaseActivity extends AppCompatActivity{
 						protected Void doInBackground(Void... params) {
 							// Register on our server
 							// On server creates a new user
+
+
 							ServerUtilities.register(context, name, email, regId);
 							return null;
 						}

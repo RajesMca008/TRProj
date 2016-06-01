@@ -6,25 +6,25 @@ import android.util.AttributeSet;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MyTextUnique extends TextView {
+public class MyLatoRegularText extends TextView {
 
-    public MyTextUnique(Context context, AttributeSet attrs, int defStyle) {
+    public MyLatoRegularText(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
     }
 
-    public MyTextUnique(Context context, AttributeSet attrs) {
+    public MyLatoRegularText(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public MyTextUnique(Context context) {
+    public MyLatoRegularText(Context context) {
         super(context);
         init();
     }
 
     private void init() {
-        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"Roboto-Light.ttf");
+        Typeface tf = Typeface.createFromAsset(getContext().getAssets(),"Lato-Regular.ttf");
         setTypeface(tf);
     }
 

@@ -5,7 +5,7 @@
     android:weightSum="3"
     android:gravity="center_vertical"
     android:minHeight="70dp"
-    android:background="#c34d4b4b"
+    android:background="@android:color/transparent"
     android:layout_height="wrap_content">
 
     <View
@@ -13,7 +13,7 @@
         android:layout_weight="0.1"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:background="#dfff0000"
+
         />
     <ImageView
         android:layout_weight="0.4"
@@ -35,18 +35,18 @@
 
         android:layout_height="wrap_content">
 
-        <com.tgs.tecipe.util.MyTextUnique
-            android:textColor="#ffffff"
+        <com.tgs.tecipe.util.MyLatoRegularText
+            android:textColor="#5b9d2a"
             android:id="@+id/recipe_name"
             android:text="Recipes"
             android:layout_width="wrap_content"
             android:textSize="18sp"
-
+  android:textStyle="bold"
             android:layout_marginBottom="3dp"
             android:layout_height="wrap_content" />
-        <com.tgs.tecipe.util.MyTextUnique
-            android:textColor="#f3ffffff"
-            android:textSize="15sp"
+        <com.tgs.tecipe.util.MyLatoRegularText
+            android:textColor="#ed9e9a9a"
+            android:textSize="13sp"
             android:layout_marginLeft="4dp"
             android:id="@+id/recipe_type"
             android:layout_width="wrap_content"

@@ -37,6 +37,7 @@ import com.google.android.gms.ads.AdView;
 import com.tgs.tecipe.util.AppDataBean;
 import com.tgs.tecipe.util.Item;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -53,18 +54,17 @@ public class ListViewActivity extends BaseActivity implements AdapterView.OnItem
     Adptr adptr=null;
 
 
-    private static final String[] COUNTRIES = new String[] { "Belgium",
-            "France", "France_", "Italy", "Germany", "Spain" };
-
     ArrayList<Item> recipesList=null;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_view);
-
-
 
         isVeg=getIntent().getBooleanExtra("IS_VEG",false);
+
+        if(isVeg)
+            setContentView(R.layout.activity_list_view);
+        else
+            setContentView(R.layout.non_veg_list_layout);
 
         mListView =(ListView)findViewById(R.id.list_view);
 
@@ -101,7 +101,7 @@ public class ListViewActivity extends BaseActivity implements AdapterView.OnItem
         // Load an ad into the AdMob banner view.
         adView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("85BE868226D2620A881B2A5C9D76AA8C") //we need to remove
+               // .addTestDevice("85BE868226D2620A881B2A5C9D76AA8C") //we need to remove
                 .build();
 
         adView.loadAd(adRequest);
@@ -177,6 +177,8 @@ public class ListViewActivity extends BaseActivity implements AdapterView.OnItem
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
         Intent intent=new Intent(this,PDFFileDisplay.class);
+        Log.d("TEST"," Recipe"+((Item)adapterView.getItemAtPosition(i)).getLink());
+         intent.putExtra("REC", (Serializable) adapterView.getItemAtPosition(i));
         startActivity(intent);
     }
 
@@ -263,10 +265,10 @@ public class ListViewActivity extends BaseActivity implements AdapterView.OnItem
                 convertView = layoutinflater.inflate(R.layout.list_item_new, null);
                 holder = new ViewHolder();
 
-                if(isVeg)
+               /* if(isVeg)
                     convertView.findViewById(R.id.strip_color).setBackgroundColor(ContextCompat.getColor(activity,R.color.veg_color));
                 else
-                    convertView.findViewById(R.id.strip_color).setBackgroundColor(ContextCompat.getColor(activity,R.color.non_veg_color));
+                    convertView.findViewById(R.id.strip_color).setBackgroundColor(ContextCompat.getColor(activity,R.color.non_veg_color));*/
 
                 // holder.txtName = (TextView) convertView.findViewById(R.id.row_serch_txt_name);
 
@@ -281,8 +283,14 @@ public class ListViewActivity extends BaseActivity implements AdapterView.OnItem
             }
 
             // holder.txtArtistName.setText("" + modelValue.get_NAME());
+           TextView tecipeTitle= (TextView)convertView.findViewById(R.id.recipe_name);
+            if(isVeg)
+                tecipeTitle.setTextColor(ContextCompat.getColor(activity,R.color.veg_color));
+            else
+                tecipeTitle.setTextColor(ContextCompat.getColor(activity,R.color.non_veg_color));
 
-            ((TextView)convertView.findViewById(R.id.recipe_name)).setText(modelValues.get(position).getName());
+            tecipeTitle.setText(modelValues.get(position).getName());
+
             ((TextView)convertView.findViewById(R.id.recipe_type)).setText(modelValues.get(position).getType());
 
 

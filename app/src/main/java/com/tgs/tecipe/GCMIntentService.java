@@ -95,21 +95,9 @@ public class GCMIntentService extends GCMBaseIntentService {
      * Issues a notification to inform the user that server has sent a message.
      */
     private static void generateNotification(Context context, String message) {
-        int icon = R.mipmap.ic_launcher;
+        int icon = R.drawable.ic_launcher;
         long when = System.currentTimeMillis();
-        NotificationManager notificationManager = (NotificationManager)
-                context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Bitmap bitmap= BitmapFactory.decodeResource(context.getResources(),R.mipmap.ic_launcher);
-        Notification notification =new Notification.Builder(context)
-                .setContentTitle(context.getString(R.string.app_name))
-                .setContentText(message)
-                .setSmallIcon(R.mipmap.ic_launcher)
-                //.setLargeIcon(R.drawable.veg_icon)
-                .setLargeIcon(bitmap)
-                .build();
-        // new Notification(icon, message, when);
 
-       //String title = context.getString(R.string.app_name);
 
         Intent notificationIntent = new Intent(context, SplashScreenActivity.class);
         // set intent so it does not start a new activity
@@ -120,6 +108,24 @@ public class GCMIntentService extends GCMBaseIntentService {
         notificationIntent.putExtra("MSG", message);
         PendingIntent intent =
                 PendingIntent.getActivity(context, 0, notificationIntent, 0);
+
+        NotificationManager notificationManager = (NotificationManager)
+                context.getSystemService(Context.NOTIFICATION_SERVICE);
+        Bitmap bitmap= BitmapFactory.decodeResource(context.getResources(),R.drawable.ic_launcher);
+        Notification notification =new Notification.Builder(context)
+                .setContentTitle(context.getString(R.string.app_name))
+                .setContentText(message)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                //.setLargeIcon(R.drawable.veg_icon)
+                .setContentIntent(intent)
+                .setLargeIcon(bitmap)
+                .build();
+        // new Notification(icon, message, when);
+
+       //String title = context.getString(R.string.app_name);
+
+
+
         // notification.setLatestEventInfo(context, title, message, intent);
 
         Random random = new Random();

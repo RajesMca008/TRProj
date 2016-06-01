@@ -6,7 +6,7 @@
 
     <color name="black_overlay">#66000000</color>
 
-    <color name="non_veg_color">#dfff0000</color>
-    <color name="veg_color">#df00ff00</color>
+    <color name="non_veg_color">#f5811311</color>
+    <color name="veg_color">#df5b9d2a</color>
 
 </resources>

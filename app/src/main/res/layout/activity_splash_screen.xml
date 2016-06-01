@@ -11,8 +11,33 @@
         android:layout_marginTop="2dp"
         android:layout_centerHorizontal="true"
 
-        android:layout_height="130dp" android:src="@drawable/ic_launcher" />
+        android:visibility="gone"
+        android:layout_height="130dp" android:src="@mipmap/ic_launcher" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:weightSum="1"
+         android:layout_marginBottom="100dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_alignParentBottom="true">
+
+        <View
+            android:id="@+id/veg_btn"
+            android:layout_weight="0.5"
+            android:layout_width="match_parent"
+            android:background="@android:color/transparent"
+            android:layout_height="match_parent"/>
+        <View
+            android:id="@+id/non_veg_btn"
+            android:layout_weight="0.5"
+            android:background="@android:color/transparent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+<!--
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
@@ -76,6 +101,6 @@
 
         </LinearLayout>
 
-    </RelativeLayout>
+    </RelativeLayout>-->
 
 </RelativeLayout>

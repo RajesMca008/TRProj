@@ -7,7 +7,7 @@
     android:padding="5dp"
     android:orientation="vertical"
     android:id="@+id/main_layout"
-android:background="@drawable/veg_list"
+    android:background="@drawable/non_veg_list"
     tools:context="com.tgs.tecipe.ListViewActivity">
 
 
@@ -34,7 +34,7 @@ android:background="@drawable/veg_list"
         android:layout_width="match_parent"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="10dp"
-         android:layout_above="@id/adView"
+        android:layout_above="@id/adView"
         android:divider="#f58b878b"
 
         android:layout_height="wrap_content"/>
