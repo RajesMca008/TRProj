@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "712732669768",
+    "firebase_url": "https://telugu-recipes.firebaseio.com",
+    "project_id": "telugu-recipes",
+    "storage_bucket": "telugu-recipes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:712732669768:android:221314835613bd0e",
+        "android_client_info": {
+          "package_name": "com.tgs.tecipe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "712732669768-tf24an6k9a0nskub2jg5r1e24qdc22uq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtW0OVeDYN8imEW2EIiCd9hhpO9ICUFRE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

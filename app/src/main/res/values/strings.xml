@@ -30,4 +30,6 @@
 
     <!-- this is Telugu recipes add-->
     <string name="interstitial_ad_unit_id">ca-app-pub-5674027387172985/2637694950</string>
+    <string name="title_activity_web_view">WebViewActivity</string>
+    <string name="telugu_title">తెలుగు వంటకాలు </string>
 </resources>

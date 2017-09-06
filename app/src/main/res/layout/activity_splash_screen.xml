@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_img"
 
     tools:context="com.tgs.tecipe.SplashScreenActivity">
@@ -14,14 +15,37 @@
         android:visibility="gone"
         android:layout_height="130dp" android:src="@mipmap/ic_launcher" />
 
+    <io.supercharge.shimmerlayout.ShimmerLayout
+        android:id="@+id/even_more_lay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+
+        app:shimmer_animation_duration="2200"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button_red"
+          >
+        <TextView
+            android:layout_width="match_parent"
+            android:textSize="24dp"
+            android:text="Newly Added"
+            android:textStyle="italic"
+            android:textColor="@color/white"
+            android:layout_height="match_parent" />
+    </io.supercharge.shimmerlayout.ShimmerLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:weightSum="1"
          android:layout_marginBottom="100dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
 
         <View
             android:id="@+id/veg_btn"
@@ -37,70 +61,7 @@
             android:layout_height="match_parent"/>
 
     </LinearLayout>
-<!--
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-
-        android:id="@+id/main_content_layout"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:id="@+id/content_layout"
-            android:weightSum="1"
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
 
 
-
-            android:layout_height="wrap_content" >
-            <ImageView
-                android:layout_weight="0.5"
-                android:id="@+id/veg_btn"
-                android:layout_width="100dp"
-                android:layout_margin="5dp"
-                android:src="@drawable/veg_icon"
-                android:layout_height="100dp" />
-
-            <ImageView
-                android:layout_weight="0.5"
-                android:id="@+id/non_veg_btn"
-                android:layout_width="100dp"
-                android:layout_margin="5dp"
-                android:src="@drawable/non_veg_icon"
-                android:layout_height="100dp" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_below="@id/content_layout"
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="1"
-            android:gravity="center"
-            android:background="#4a4444"
-            android:layout_height="wrap_content">
-            <com.tgs.tecipe.util.MyTextUnique
-                android:textSize="24sp"
-                android:id="@+id/veg_text"
-                android:layout_weight="0.5"
-                android:textStyle="bold"
-                android:textColor="@android:color/holo_green_dark"
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_height="wrap_content" android:text="Veg" android:layout_marginBottom="2dp" />
-            <com.tgs.tecipe.util.MyTextUnique
-                android:textSize="24sp"
-                android:id="@+id/non_text"
-                android:textStyle="bold"
-                android:layout_weight="0.5"
-                android:gravity="center"
-                android:textColor="@android:color/holo_red_dark"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="2dp"
-                android:layout_height="wrap_content" android:text="Non-Veg" />
-
-        </LinearLayout>
-
-    </RelativeLayout>-->
 
 </RelativeLayout>

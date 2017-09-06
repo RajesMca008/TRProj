@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
@@ -25,19 +26,14 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
+import io.supercharge.shimmerlayout.ShimmerLayout;
+
 
 public class SplashScreenActivity extends AppCompatActivity implements View.OnClickListener{
 
 
-   // private RelativeLayout mContentLayour=null;
-   // private Animation animation =null;
-
-    //private TextView vegText =null;
-    //private TextView nonvegText =null;
-
     private SplashScreenActivity _activity;
     private XMLHandler xmlHandler=null;
-
 
     private InterstitialAd mInterstitialAd;
 
@@ -49,28 +45,24 @@ public class SplashScreenActivity extends AppCompatActivity implements View.OnCl
 
         setContentView(R.layout.activity_splash_screen);
 
-       // mContentLayour=(RelativeLayout)findViewById(R.id.main_content_layout);
-
-
-
-
-
-
-
-
-       //mContentLayour.setVisibility(View.GONE);
-
-
-        //animation = AnimationUtils.loadAnimation(SplashScreenActivity.this,R.anim.bottom_up);
-
-        //animation.setDuration(1000);
-
-       // vegText =(TextView)findViewById(R.id.veg_text);
-       // nonvegText =(TextView)findViewById(R.id.non_text);
 
         hide();
 
+        ShimmerLayout shimmerText = (ShimmerLayout) findViewById(R.id.even_more_lay);
+        shimmerText.startShimmerAnimation();
+        shimmerText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent3=new Intent(SplashScreenActivity.this,MainActivity.class);
+                startActivity(intent3);
+            }
+        });
 
+        Animation bottomUp = AnimationUtils.loadAnimation(this,
+                R.anim.bottom_up);
+
+        shimmerText.startAnimation(bottomUp);
+        shimmerText.setVisibility(View.VISIBLE);
 
         if(AppDataBean.getInstance().getVegList()==null) {
             //Load data
@@ -79,90 +71,16 @@ public class SplashScreenActivity extends AppCompatActivity implements View.OnCl
         else {
             findViewById(R.id.veg_btn).setOnClickListener(this);
             findViewById(R.id.non_veg_btn).setOnClickListener(this);
-           // mContentLayour.setVisibility(View.VISIBLE);
-           // mContentLayour.startAnimation(animation);
+
+            // mContentLayour.setVisibility(View.VISIBLE);
+            // mContentLayour.startAnimation(animation);
+
+
         }
-
-        /////////////////////////////////////////
-
-      /*  final AlphaAnimation   animation1 = new AlphaAnimation(0.0f, 1.0f);
-        animation1.setDuration(500);
-        animation1.setStartOffset(500);
-
-
-        final AlphaAnimation animation2 = new AlphaAnimation(1.0f, 0.0f);
-        animation2.setDuration(500);
-        animation2.setStartOffset(500);*/
-
-        //animation1 AnimationListener
-      /*  animation1.setAnimationListener(new Animation.AnimationListener(){
-
-            @Override
-            public void onAnimationEnd(Animation arg0) {
-                // start animation2 when animation1 ends (continue)
-                vegText.startAnimation(animation2);
-                nonvegText.startAnimation(animation2);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation arg0) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onAnimationStart(Animation arg0) {
-                // TODO Auto-generated method stub
-
-            }
-
-        });
-
-
-
-        //animation2 AnimationListener
-        animation2.setAnimationListener(new Animation.AnimationListener(){
-
-            @Override
-            public void onAnimationEnd(Animation arg0) {
-                // start animation1 when animation2 ends (repeat)
-                vegText.startAnimation(animation1);
-                nonvegText.startAnimation(animation1);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation arg0) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onAnimationStart(Animation arg0) {
-                // TODO Auto-generated method stub
-
-            }
-
-        });
-*/
-       // vegText.startAnimation(animation1);
 
 
         goToNextLevel();
     }
-
-
-   /* Handler handler=new Handler()
-    {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            mContentLayour.setVisibility(View.VISIBLE);
-            mContentLayour.startAnimation(animation);
-        }
-
-
-    };*/
-
 
 
     private void hide() {
@@ -192,10 +110,9 @@ public class SplashScreenActivity extends AppCompatActivity implements View.OnCl
                 intent2.putExtra("IS_VEG",false);
                 startActivity(intent2);
                 break;
+
         }
     }
-
-
 
     class BackGroundWork extends AsyncTask<String, String, String>
     {
@@ -288,11 +205,10 @@ public class SplashScreenActivity extends AppCompatActivity implements View.OnCl
         showInterstitial();
     }
 
-
     private void loadInterstitial() {
         // Disable the next level button and load the ad.
         AdRequest adRequest = new AdRequest.Builder()
-               // .setRequestAgent("android_studio:ad_template")
+                // .setRequestAgent("android_studio:ad_template")
                 //.addTestDevice("85BE868226D2620A881B2A5C9D76AA8C")
                 .build();
         mInterstitialAd.loadAd(adRequest);

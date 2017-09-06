@@ -10,6 +10,25 @@
 android:background="@drawable/veg_list"
     tools:context="com.tgs.tecipe.ListViewActivity">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentRight="true"
+        android:background="@color/black_overlay"
+        android:padding="5dp"
+        android:id="@+id/get_online"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:drawableLeft="@android:drawable/presence_online"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:text="Get more from online"
+            android:textStyle="bold"
+            android:textColor="@color/veg_color"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 
 
@@ -38,5 +57,9 @@ android:background="@drawable/veg_list"
         android:divider="#f58b878b"
 
         android:layout_height="wrap_content"/>
+
+
+
+
 
 </RelativeLayout>

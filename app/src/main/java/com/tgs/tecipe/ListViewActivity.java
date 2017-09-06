@@ -127,6 +127,15 @@ public class ListViewActivity extends BaseActivity implements AdapterView.OnItem
                 adView.startAnimation(animation);
             }
         });
+
+        findViewById(R.id.get_online).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent=new Intent(ListViewActivity.this,WebViewActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -181,6 +190,7 @@ public class ListViewActivity extends BaseActivity implements AdapterView.OnItem
          intent.putExtra("REC", (Serializable) adapterView.getItemAtPosition(i));
         startActivity(intent);
     }
+
 
 
 
